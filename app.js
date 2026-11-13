@@ -65,4 +65,11 @@ document.getElementById("clear-all").addEventListener("click", () => {
   }
 });
 
+// save the note with Ctrl+Enter (Cmd+Enter on Mac) while typing in the text box
+bodyInput.addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+    form.requestSubmit();
+  }
+});
+
 render();
