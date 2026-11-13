@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusNotes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>CampusNotes</h1>
+    <p>Quick notes for lectures, labs and assignments.</p>
+  </header>
+
+  <main>
+    <form id="note-form">
+      <input id="note-title" type="text" placeholder="Subject / title" required>
+      <textarea id="note-body" rows="4" placeholder="Write your note..." required></textarea>
+      <button type="submit">Add Note</button>
+    </form>
+
+    <ul id="note-list"></ul>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
