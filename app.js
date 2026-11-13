@@ -14,29 +14,33 @@ function render() {
   list.innerHTML = "";
   count.textContent = notes.length + (notes.length === 1 ? " note" : " notes");
   notes.forEach((note, index) => {
-    const li = document.createElement("li");
-    li.className = "note";
-
-    const h3 = document.createElement("h3");
-    h3.textContent = note.title;
-
-    const p = document.createElement("p");
-    p.textContent = note.body;
-
-    const small = document.createElement("small");
-    small.textContent = note.date;
-
-    const del = document.createElement("button");
-    del.textContent = "Delete";
-    del.addEventListener("click", () => {
-      notes.splice(index, 1);
-      save();
-      render();
-    });
-
-    li.append(h3, p, small, del);
-    list.appendChild(li);
+    list.appendChild(createNoteElement(note, index));
   });
+}
+
+function createNoteElement(note, index) {
+  const li = document.createElement("li");
+  li.className = "note";
+
+  const h3 = document.createElement("h3");
+  h3.textContent = note.title;
+
+  const p = document.createElement("p");
+  p.textContent = note.body;
+
+  const small = document.createElement("small");
+  small.textContent = note.date;
+
+  const del = document.createElement("button");
+  del.textContent = "Delete";
+  del.addEventListener("click", () => {
+    notes.splice(index, 1);
+    save();
+    render();
+  });
+
+  li.append(h3, p, small, del);
+  return li;
 }
 
 form.addEventListener("submit", (e) => {
