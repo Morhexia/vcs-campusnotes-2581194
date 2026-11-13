@@ -39,3 +39,13 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 ## Versions
 - `v0.1.0` – first working version (lightweight tag)
 - `v1.0.0` – first stable release (annotated tag, published as a GitHub Release)
+
+## Git hooks
+The hooks are kept in the tracked `.githooks/` folder so everyone gets them with `git clone`:
+- `pre-commit` – rejects a commit if a staged file still has a to-do or fix-me marker comment
+- `commit-msg` – rejects messages shorter than 10 characters or without a `feat:`, `fix:`, `docs:`, `refactor:` or `chore:` prefix
+
+Turn them on once after cloning:
+```bash
+git config core.hooksPath .githooks
+```
