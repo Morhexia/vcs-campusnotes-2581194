@@ -2,6 +2,7 @@ const form = document.getElementById("note-form");
 const titleInput = document.getElementById("note-title");
 const bodyInput = document.getElementById("note-body");
 const list = document.getElementById("note-list");
+const count = document.getElementById("note-count");
 
 let notes = JSON.parse(localStorage.getItem("campusnotes") || "[]");
 
@@ -11,6 +12,7 @@ function save() {
 
 function render() {
   list.innerHTML = "";
+  count.textContent = notes.length + (notes.length === 1 ? " note" : " notes");
   notes.forEach((note, index) => {
     const li = document.createElement("li");
     li.className = "note";
