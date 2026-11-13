@@ -51,4 +51,12 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
+document.getElementById("clear-all").addEventListener("click", () => {
+  if (notes.length && confirm("Delete all notes?")) {
+    notes = [];
+    save();
+    render();
+  }
+});
+
 render();
