@@ -17,3 +17,8 @@ Open `index.html` in any web browser. No installation needed.
 - `main` – stable version
 - `feature/note-search` – search box to filter notes
 - `feature/dark-mode` – dark mode toggle
+
+## Workflow notes
+This repository was cloned into a second folder, changed there, pushed,
+and then pulled back into the original local repository to test the
+clone → commit → push → pull cycle.
