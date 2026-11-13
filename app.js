@@ -41,11 +41,13 @@ function render() {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  notes.unshift({
-    title: titleInput.value.trim(),
-    body: bodyInput.value.trim(),
-    date: new Date().toLocaleString(),
-  });
+  const title = titleInput.value.trim();
+  const body = bodyInput.value.trim();
+  if (!title || !body) {
+    alert("Title and note cannot be empty or only spaces.");
+    return;
+  }
+  notes.unshift({ title, body, date: new Date().toLocaleString() });
   save();
   render();
   form.reset();
