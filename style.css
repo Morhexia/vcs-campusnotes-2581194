@@ -56,3 +56,8 @@ button {
 
 .note h3 { margin: 0 0 6px; }
 .note small { color: #777; }
+
+#search {
+  width: 100%;
+  margin-bottom: 16px;
+}

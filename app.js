@@ -2,6 +2,7 @@ const form = document.getElementById("note-form");
 const titleInput = document.getElementById("note-title");
 const bodyInput = document.getElementById("note-body");
 const list = document.getElementById("note-list");
+const search = document.getElementById("search");
 
 let notes = JSON.parse(localStorage.getItem("campusnotes") || "[]");
 
@@ -11,7 +12,9 @@ function save() {
 
 function render() {
   list.innerHTML = "";
+  const q = search.value.toLowerCase();
   notes.forEach((note, index) => {
+    if (q && !(note.title + " " + note.body).toLowerCase().includes(q)) return;
     const li = document.createElement("li");
     li.className = "note";
 
@@ -29,7 +32,9 @@ function render() {
     del.addEventListener("click", () => {
       notes.splice(index, 1);
       save();
-      render();
+      search.addEventListener("input", render);
+
+render();
     });
 
     li.append(h3, p, small, del);
@@ -45,8 +50,12 @@ form.addEventListener("submit", (e) => {
     date: new Date().toLocaleString(),
   });
   save();
-  render();
+  search.addEventListener("input", render);
+
+render();
   form.reset();
 });
+
+search.addEventListener("input", render);
 
 render();
