@@ -56,3 +56,19 @@ button {
 
 .note h3 { margin: 0 0 6px; }
 .note small { color: #777; }
+
+body.dark {
+  background: #1e1f24;
+  color: #eee;
+}
+
+body.dark .note {
+  background: #2b2d34;
+}
+
+body.dark input,
+body.dark textarea {
+  background: #2b2d34;
+  color: #eee;
+  border-color: #444;
+}
