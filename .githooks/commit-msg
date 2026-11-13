@@ -1,0 +1,21 @@
+#!/bin/sh
+# commit-msg hook: the first line of the message must
+#   1) be at least 10 characters long, and
+#   2) start with feat:, fix:, docs:, refactor: or chore:
+
+msg_file="$1"
+first_line=$(grep -v '^#' "$msg_file" | head -n 1)
+length=$(printf '%s' "$first_line" | wc -c | tr -d ' ')
+
+if [ "$length" -lt 10 ]; then
+    echo "commit-msg: message is too short ($length characters). Use at least 10."
+    exit 1
+fi
+
+if ! printf '%s' "$first_line" | grep -qE '^(feat|fix|docs|refactor|chore)(\([a-z0-9-]+\))?: .+'; then
+    echo "commit-msg: message must start with feat:, fix:, docs:, refactor: or chore:"
+    echo "            example: feat: add search by subject"
+    exit 1
+fi
+
+exit 0

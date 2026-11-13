@@ -1,0 +1,26 @@
+#!/bin/sh
+# pre-commit hook: reject the commit if any staged file contains TODO or FIXME.
+# Only the staged version of each file is checked (what will actually be committed).
+
+git diff --cached --name-only --diff-filter=ACM | while IFS= read -r file; do
+    # the hook scripts themselves mention the words, so skip this folder
+    case "$file" in
+        .githooks/*) continue ;;
+    esac
+
+    matches=$(git show ":$file" | grep -nE 'TODO|FIXME')
+    if [ -n "$matches" ]; then
+        echo "pre-commit: '$file' contains TODO/FIXME:"
+        echo "$matches" | sed 's/^/    line /'
+        # the while loop runs in a subshell, so leave a marker file for the parent
+        touch "$(git rev-parse --git-dir)/.todo_found"
+    fi
+done
+
+if [ -f "$(git rev-parse --git-dir)/.todo_found" ]; then
+    rm -f "$(git rev-parse --git-dir)/.todo_found"
+    echo "pre-commit: commit rejected. Remove TODO/FIXME from the staged files and try again."
+    exit 1
+fi
+
+exit 0
