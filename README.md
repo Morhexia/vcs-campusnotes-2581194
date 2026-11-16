@@ -63,3 +63,11 @@ git config core.hooksPath .githooks
 - Add a search and filter option for notes.
 - Support editing existing notes.
 - Improve accessibility and mobile responsiveness.
+
+
+## Troubleshooting
+
+If the Git hooks do not run after cloning, configure the hooks path manually:
+
+```bash
+git config core.hooksPath .githooks
