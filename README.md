@@ -71,3 +71,4 @@ If the Git hooks do not run after cloning, configure the hooks path manually:
 
 ```bash
 git config core.hooksPath .githooks
+```
