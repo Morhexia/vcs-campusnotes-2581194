@@ -49,3 +49,25 @@ Turn them on once after cloning:
 ```bash
 git config core.hooksPath .githooks
 ```
+
+## Project Structure
+
+- `index.html` – Defines the application layout and interface.
+- `style.css` – Handles the styling and visual appearance.
+- `app.js` – Contains the note-taking functionality and application logic.
+- `README.md` – Provides project documentation and setup instructions.
+- `.githooks/` – Contains shared pre-commit and commit-msg hooks.
+- `.gitignore` – Lists files and folders Git should ignore.
+
+## Future Improvements
+
+- Add a search and filter option for notes.
+- Support editing existing notes.
+- Improve accessibility and mobile responsiveness.
+
+## Troubleshooting
+
+If the Git hooks do not run after cloning, configure the hooks path manually:
+
+```bash
+git config core.hooksPath .githooks
